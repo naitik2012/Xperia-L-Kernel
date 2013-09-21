@@ -1,0 +1,38 @@
+WARNING!
+
+DO NOT USE TOO HIGH OR TOO LOW VOLTAGES
+
+SLOWLY increase the voltage one notch at a time for a particular frequency and do stability/testing for few hours
+
+once you have verified that you CPU chip can handle that voltage ONLY then "Set at boot"/Use init.d script.
+
+If you dont follow above instruction your device might end in bootloop. 
+
+Method 1: Via an app ( For example TricksterMOD )
+
+Method 2: Via sys interface
+
+The interface to control voltages is at:
+/sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+
+To see current voltage table use:
+cat /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+
+To set voltage at particular frequency:
+echo 1404000 1137500 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+will set 1404 MHz freq voltage at 1137.5 mV
+
+to reduce voltages for ALL frequencies by x ( here x=-25000 ) :
+echo -25000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+
+to increase voltages for ALL frequencies by x ( here x=+25000 ):
+echo +25000 > /sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels
+
+Method 3: Via init.d script
+
+* Download attached vdd_battery_saver.zip and flash via recovery.
+* Go to system/etc/init.d
+* edit the 20vdd script
+Change vdd variable to increase/decrease voltages at boot
+for example : vdd=-30000 ( to decrease all voltages by 30000 )
+You can check log at /data/local/tmp/vdd.txt 
