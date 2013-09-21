@@ -4,5 +4,5 @@ export PATH
 
 #Build kernel
 ARCH=arm CROSS_COMPILE=arm-linux-androideabi- make sa77_defconfig
-#ARCH=arm CROSS_COMPILE=arm-linux-androideabi- make -j8
+ARCH=arm CROSS_COMPILE=arm-linux-androideabi- make -j8
 
