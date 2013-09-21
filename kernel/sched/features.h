@@ -4,7 +4,6 @@
  * rip the spread apart.
  */
 SCHED_FEAT(GENTLE_FAIR_SLEEPERS, false)
-s
 /*
  * Place new tasks ahead so that they do not starve already running
  * tasks
