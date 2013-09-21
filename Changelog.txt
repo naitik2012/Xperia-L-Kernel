@@ -1,0 +1,134 @@
+                                  Changelog for Vengeance Kernel
+                                               
+Devices Supported ( 3.4 Linux kernel ):-
+
+* Xperia L ( TAOSHAN )
+
+
+>----Version 1.21---- 
+* First Release
+* Based on official 15.0.A.1.31 sources
+* Compiled using Google 4.7 Toolchain
+* Min freq 384 MHz - Max 1.2 GHz
+* Autoroot with latest su binary
+* Init.d support
+* Neon Optimizations
+* CAF backport fixes
+* ARM_THUMBEE Support
+* Removed some debugging s**ts
+* Swap Support
+* ext 2/3/4 support
+* Salvaged 7.5 MB RAM
+* Disable CCI_KLOG (Thanks to @fxp)
+* Cleancache
+* SLUB Memory Allocator
+* LZO compression
+* CIFS, NTFS, FUSE and TUN as external modules
+* Frandom Entropy generator
+* /rootfs and /system mounted as rw
+* Persistent adb
+* Added Interactive and conservative governor
+* Removed userspace governor
+* Added sio IO sched
+* Optmize deadline
+
+>----Version 1.22---- 
+* Disable MSM DCVS
+* msm: mdp: Fix reserved field usage (Thanks @Naseer Ahmed)
+* add wheatley governor (thanks to @Ezekeel)
+* Min freq 384 MHz - Max 1404000 MHz
+* GPU MAX Core clk set to 450 MHz
+* ported USB force FastCharge from apq8064 (Thanks @DooMLoRD)
+* kernel level sound control (Thanks @faux123)
+* Hardcode cmdline into kernel
+* Switch to GZIP Compression for both kernel and ramdisk
+
+>----Version 1.23---- 
+* Default Boot Frequency set to 1188000 MHz-384 MHz
+* Used glibc lib/string and lib/memcopy for faster memory mapping
+* Tweak VM READAHEAD to 1024
+* usb: force 500Ma charging current on unknown chargers (Thanks to @fxp)
+* Use dynamic file sync (Thanks to @faux123)
+* Remove ARM_THUMBEE Support
+* Ramdisk Optimized by removing unwanted services at boot
+* Some fixes to ps3 controller support
+* Some fixes to usb config at boot
+* Amber LED at boot + Short Vibration
+
+>----Version 1.25---- 
+* Integrated CWM+TWRP into kernel
+* Vol Buttons - CWM & Power Button - TWRP ( when amber LED glows )
+* Remove junks from ramdisk
+* Remove autoroot
+* All ramdisk.cpio compressed in lzma
+* Some various under the hood fixes and optimizations
+
+>----Version 1.26---- 
+* Updated CWM to 6.3.3.0
+* Some fixes to CWM
+* Single recovery and Dual recovery versions
+* Ramdisk optimizations
+
+>----Version 1.28---- 
+* Linaro Compiled
+* O3 + cortex A15 optimizations ( Thanks to franciscofranco )
+* Added UnderVolting Support
+* Added 192 MHz to acpuclock
+* Default IOSCHED set to deadline
+* Removed Faux Sound control
+* Change kernel version string
+* Remove dma_test and mmc_test modules
+
+>----Version 1.30---- 
+* Remove more debugging s**ts
+* Undervolt all frequencies by 50mV for better battery backup and performance 
+* Switch to XZ compressed kernel
+* Switch to LZMA compressed main ramdisk
+
+>----Version 1.32----  NA
+>----Version 1.34----  NA
+
+>----Version 1.36---- 
+* Based on fresh .36 sources
+* Update Linaro to 13.07
+* Remove cpu and gpu overclock
+* Remove dynamic fsync
+* Remove wheatley govenor
+
+>----Version 1.40---- (Hot Update)
+* Based on 15.0.A.2.17 sources
+* CWM bumped to 6.0.3.5
+* Wlan Modules compiled from source
+* Enable IntelliPlug (Recommended instead of mpdecision)
+* Disable eco-mode completely and optimize intelli-plug for dual cores
+* Add intelli-demand governor (Recommended)
+* Enable Dynamic Fsync 2.0
+* Add new TCP congestion methods
+  + WESTWOOD
+  + VEGAS
+  + BIC
+  + Highspeed
+  + HTCP
+  + CUBIC -- default
+  + reno
+* Reintroduce MSM-DCVS
+* Fix module GLOBAL_OFFSET error
+* ro.secure=1
+* Add vr IOSCHED and set it as default
+* Dynamic management of dirty page writebacks
+* Add 400MHz and 128MHz GPU scaling levels (Default 400MHz)
+* random: 512 bits read wakeup threshold + remove debug
+* switch to xz initrd
+* Optimize init script
+* Remove some debug
+* Overall improved and 
+
+>----Version 2.0---- (Hot Update)
+* Based on 15.0.A.2.17 sources
+* worked on from scratch
+* Stock 15.0.A.2.17 ramdisk
+* Removed Fast Charge
+* Wlan modules compiled from source
+* Backport all major previous features
+* Removed more debugging
+* NO Bulls**t
