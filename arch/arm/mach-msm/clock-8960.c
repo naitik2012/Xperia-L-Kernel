@@ -11,6 +11,9 @@
  * GNU General Public License for more details.
  */
 
+#undef CONFIG_DEBUG_FS
+
+#undef CONFIG_DEBUG_FS
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/err.h>
@@ -5375,11 +5378,11 @@ static struct clk_lookup msm_clocks_8064[] = {
 	CLK_LOOKUP("reset1_clk",	dsi1_reset_clk.c, "footswitch-8x60.4"),
 	CLK_LOOKUP("reset2_clk",	dsi2_reset_clk.c, "footswitch-8x60.4"),
 
-	CLK_LOOKUP("l2_mclk",		l2_m_clk,     ""),
+	/* CLK_LOOKUP("l2_mclk",		l2_m_clk,     ""),
 	CLK_LOOKUP("krait0_mclk",	krait0_m_clk, ""),
 	CLK_LOOKUP("krait1_mclk",	krait1_m_clk, ""),
 	CLK_LOOKUP("krait2_mclk",	krait2_m_clk, ""),
-	CLK_LOOKUP("krait3_mclk",	krait3_m_clk, ""),
+	CLK_LOOKUP("krait3_mclk",	krait3_m_clk, ""), */
 };
 
 static struct clk_lookup msm_clocks_8960[] = {
@@ -5702,12 +5705,12 @@ static struct clk_lookup msm_clocks_8960[] = {
 	CLK_LOOKUP("reset1_clk",	dsi1_reset_clk.c, "footswitch-8x60.4"),
 	CLK_LOOKUP("reset2_clk",	dsi2_reset_clk.c, "footswitch-8x60.4"),
 
-	CLK_LOOKUP("l2_mclk",		l2_m_clk,     ""),
+	/* CLK_LOOKUP("l2_mclk",		l2_m_clk,     ""),
 	CLK_LOOKUP("krait0_mclk",	krait0_m_clk, ""),
 	CLK_LOOKUP("krait1_mclk",	krait1_m_clk, ""),
 	CLK_LOOKUP("q6sw_clk",		q6sw_clk,     ""),
 	CLK_LOOKUP("q6fw_clk",		q6fw_clk,     ""),
-	CLK_LOOKUP("q6_func_clk",	q6_func_clk,  ""),
+	CLK_LOOKUP("q6_func_clk",	q6_func_clk,  ""), */
 };
 
 static struct clk_lookup msm_clocks_8930[] = {  //: this one
@@ -6018,12 +6021,12 @@ static struct clk_lookup msm_clocks_8930[] = {  //: this one
 
 	CLK_LOOKUP("reset1_clk",	dsi1_reset_clk.c, "footswitch-8x60.4"),
 
-	CLK_LOOKUP("l2_mclk",		l2_m_clk,     ""),
+	/*CLK_LOOKUP("l2_mclk",		l2_m_clk,     ""),
 	CLK_LOOKUP("krait0_mclk",	krait0_m_clk, ""),
 	CLK_LOOKUP("krait1_mclk",	krait1_m_clk, ""),
 	CLK_LOOKUP("q6sw_clk",		q6sw_clk,     ""),
 	CLK_LOOKUP("q6fw_clk",		q6fw_clk,     ""),
-	CLK_LOOKUP("q6_func_clk",	q6_func_clk,  ""),
+	CLK_LOOKUP("q6_func_clk",	q6_func_clk,  ""), */
 };
 /*
  * Miscellaneous clock register initializations

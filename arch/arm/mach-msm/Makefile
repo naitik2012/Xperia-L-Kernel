@@ -8,7 +8,7 @@ endif
 obj-y += clock.o clock-voter.o clock-dummy.o
 obj-y += modem_notifier.o subsystem_map.o
 obj-$(CONFIG_CPU_FREQ_MSM) += cpufreq.o
-obj-$(CONFIG_DEBUG_FS) += nohlt.o clock-debug.o
+# obj-$(CONFIG_DEBUG_FS) += nohlt.o clock-debug.o
 obj-$(CONFIG_KEXEC) += msm_kexec.o
 obj-$(CONFIG_INTELLI_PLUG) += intelli_plug.o
 
@@ -20,7 +20,7 @@ ifndef CONFIG_ARCH_MSM8X60
 ifndef CONFIG_ARCH_FSM9XXX
 		obj-$(CONFIG_REGULATOR) += footswitch-pcom.o
 endif
-		obj-$(CONFIG_DEBUG_FS) += pmic_debugfs.o
+		#obj-$(CONFIG_DEBUG_FS) += pmic_debugfs.o
 	endif
 endif
 
@@ -95,9 +95,9 @@ obj-$(CONFIG_MSM_SDIO_DMUX) += sdio_dmux.o
 obj-$(CONFIG_MSM_BAM_DMUX) += bam_dmux.o
 obj-$(CONFIG_MSM_SMD_LOGGING) += smem_log.o
 obj-$(CONFIG_MSM_IPC_LOGGING) += ipc_logging.o
-ifdef CONFIG_DEBUG_FS
-obj-$(CONFIG_MSM_IPC_LOGGING) += ipc_logging_debug.o
-endif
+#ifdef CONFIG_DEBUG_FS
+#obj-$(CONFIG_MSM_IPC_LOGGING) += ipc_logging_debug.o
+#endif
 obj-$(CONFIG_MSM_SMD) += smd.o smd_debug.o remote_spinlock.o smd_private.o
 obj-y += socinfo.o
 ifndef CONFIG_ARCH_MSM9615
@@ -137,7 +137,7 @@ obj-$(CONFIG_MSM_ONCRPCROUTER) += smd_rpcrouter.o
 obj-$(CONFIG_MSM_ONCRPCROUTER) += smd_rpcrouter_device.o
 obj-$(CONFIG_MSM_IPC_ROUTER) += ipc_router.o
 obj-$(CONFIG_MSM_IPC_ROUTER)+= ipc_socket.o
-obj-$(CONFIG_DEBUG_FS) += smd_rpc_sym.o
+#obj-$(CONFIG_DEBUG_FS) += smd_rpc_sym.o
 obj-$(CONFIG_MSM_ONCRPCROUTER) += smd_rpcrouter_servers.o
 obj-$(CONFIG_MSM_ONCRPCROUTER) += smd_rpcrouter_clients.o
 obj-$(CONFIG_MSM_ONCRPCROUTER) += smd_rpcrouter_xdr.o
@@ -389,7 +389,7 @@ obj-$(CONFIG_MSM_RPM_SMD) += rpm-smd.o
 obj-$(CONFIG_MSM_CPR) += msm_cpr.o
 obj-$(CONFIG_MSM_VP_REGULATOR) += msm_vp.o
 
-ifdef CONFIG_MSM_CPR
-obj-$(CONFIG_DEBUG_FS) += msm_cpr-debug.o
-endif
+#ifdef CONFIG_MSM_CPR
+#obj-$(CONFIG_DEBUG_FS) += msm_cpr-debug.o
+#endif
 obj-y += msm_cpu_pwrctl.o

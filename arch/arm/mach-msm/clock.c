@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  *
  */
-
+#undef CONFIG_DEBUG_FS
 #include <linux/kernel.h>
 #include <linux/err.h>
 #include <linux/spinlock.h>
@@ -510,10 +510,11 @@ static int __init clock_late_init(void)
 {
 	struct handoff_clk *h, *h_temp;
 	int n, ret = 0;
-
+#ifdef CONFIG_DEBUG_FS
 	clock_debug_init(clk_init_data);
 	for (n = 0; n < clk_init_data->size; n++)
 		clock_debug_add(clk_init_data->table[n].clk);
+#endif
 
 	pr_info("%s: Removing enables held for handed-off clocks\n", __func__);
 	list_for_each_entry_safe(h, h_temp, &handoff_list, list) {

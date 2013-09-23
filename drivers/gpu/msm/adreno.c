@@ -455,7 +455,8 @@ static void adreno_gpummu_setstate(struct kgsl_device *device,
 	 * writes For CFF dump we must idle and use the registers so that it is
 	 * easier to filter out the mmu accesses from the dump
 	 */
-	if (!kgsl_cff_dump_enable && adreno_dev->drawctxt_active) {
+	//if (!kgsl_cff_dump_enable && adreno_dev->drawctxt_active) {
+          if (adreno_dev->drawctxt_active) {
 		context = idr_find(&device->context_idr, context_id);
 		adreno_ctx = context->devctxt;
 
@@ -715,7 +716,7 @@ adreno_probe(struct platform_device *pdev)
 	if (status)
 		goto error_close_rb;
 
-	adreno_debugfs_init(device);
+	//adreno_debugfs_init(device);
 
 	kgsl_pwrscale_init(device);
 	kgsl_pwrscale_attach_policy(device, ADRENO_DEFAULT_PWRSCALE_POLICY);

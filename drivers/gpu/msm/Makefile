@@ -11,7 +11,7 @@ msm_kgsl_core-y = \
 	kgsl_iommu.o \
 	kgsl_snapshot.o
 
-msm_kgsl_core-$(CONFIG_DEBUG_FS) += kgsl_debugfs.o
+#msm_kgsl_core-$(CONFIG_DEBUG_FS) += kgsl_debugfs.o
 msm_kgsl_core-$(CONFIG_MSM_KGSL_CFF_DUMP) += kgsl_cffdump.o
 msm_kgsl_core-$(CONFIG_MSM_KGSL_DRM) += kgsl_drm.o
 msm_kgsl_core-$(CONFIG_MSM_SCM) += kgsl_pwrscale_trustzone.o
@@ -31,7 +31,7 @@ msm_adreno-y += \
 	adreno_a3xx_snapshot.o \
 	adreno.o
 
-msm_adreno-$(CONFIG_DEBUG_FS) += adreno_debugfs.o
+#msm_adreno-$(CONFIG_DEBUG_FS) += adreno_debugfs.o
 
 msm_z180-y += \
 	z180.o \

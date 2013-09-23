@@ -2458,7 +2458,7 @@ int kgsl_device_platform_probe(struct kgsl_device *device)
 		return status;
 
 	/* Initialize logging first, so that failures below actually print. */
-	kgsl_device_debugfs_init(device);
+	//kgsl_device_debugfs_init(device);
 
 	status = kgsl_pwrctrl_init(device);
 	if (status)
@@ -2616,7 +2616,7 @@ static void kgsl_core_exit(void)
 
 	kgsl_drm_exit();
 	kgsl_cffdump_destroy();
-	kgsl_core_debugfs_close();
+	//kgsl_core_debugfs_close();
 
 	/*
 	 * We call kgsl_sharedmem_uninit_sysfs() and device_unregister()
@@ -2688,7 +2688,7 @@ static int __init kgsl_core_init(void)
 		kobject_create_and_add("proc",
 				       &kgsl_driver.virtdev.kobj);
 
-	kgsl_core_debugfs_init();
+	//kgsl_core_debugfs_init();
 
 	kgsl_sharedmem_init_sysfs();
 	kgsl_cffdump_init();

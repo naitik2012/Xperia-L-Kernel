@@ -289,7 +289,7 @@ struct regmap *regmap_init(struct device *dev,
 		goto err_map;
 	}
 
-	regmap_debugfs_init(map);
+	//regmap_debugfs_init(map);
 
 	ret = regcache_init(map, config);
 	if (ret < 0)
@@ -363,7 +363,7 @@ int regmap_reinit_cache(struct regmap *map, const struct regmap_config *config)
 	mutex_lock(&map->lock);
 
 	regcache_exit(map);
-	regmap_debugfs_exit(map);
+	//regmap_debugfs_exit(map);
 
 	map->max_register = config->max_register;
 	map->writeable_reg = config->writeable_reg;
@@ -372,7 +372,7 @@ int regmap_reinit_cache(struct regmap *map, const struct regmap_config *config)
 	map->precious_reg = config->precious_reg;
 	map->cache_type = config->cache_type;
 
-	regmap_debugfs_init(map);
+	//regmap_debugfs_init(map);
 
 	map->cache_bypass = false;
 	map->cache_only = false;
@@ -390,7 +390,7 @@ int regmap_reinit_cache(struct regmap *map, const struct regmap_config *config)
 void regmap_exit(struct regmap *map)
 {
 	regcache_exit(map);
-	regmap_debugfs_exit(map);
+	//regmap_debugfs_exit(map);
 	kfree(map->work_buf);
 	kfree(map);
 }
@@ -929,7 +929,7 @@ EXPORT_SYMBOL_GPL(regmap_get_val_bytes);
 
 static int __init regmap_initcall(void)
 {
-	regmap_debugfs_initcall();
+	//regmap_debugfs_initcall();
 
 	return 0;
 }

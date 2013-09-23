@@ -13,7 +13,7 @@
 /*
  * Shared memory logging implementation.
  */
-
+#undef CONFIG_DEBUG_FS
 #include <linux/slab.h>
 #include <linux/uaccess.h>
 #include <linux/module.h>
