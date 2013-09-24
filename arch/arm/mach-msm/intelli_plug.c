@@ -25,12 +25,12 @@
 #undef DEBUG_INTELLI_PLUG
 
 #define INTELLI_PLUG_MAJOR_VERSION	1
-#define INTELLI_PLUG_MINOR_VERSION	6
+#define INTELLI_PLUG_MINOR_VERSION	7
 
 #define DEF_SAMPLING_RATE		(50000)
 #define DEF_SAMPLING_MS			(200)
 
-#define DUAL_CORE_PERSISTENCE		15
+#define DUAL_CORE_PERSISTENCE		12
 #define TRI_CORE_PERSISTENCE		12
 #define QUAD_CORE_PERSISTENCE		9
 
@@ -45,9 +45,9 @@ struct delayed_work intelli_plug_work;
 static unsigned int intelli_plug_active = 0;
 module_param(intelli_plug_active, uint, 0644);
 
-static unsigned int eco_mode_active = 0;
+/*static unsigned int eco_mode_active = 0;
 module_param(eco_mode_active, uint, 0644);
-
+*/
 static unsigned int persist_count = 0;
 static bool suspended = false;
 
@@ -57,13 +57,13 @@ module_param(nr_fshift, uint, 0644);
 
 static unsigned int nr_run_thresholds_full[] = {
 /* 	1,  2,  3,  4 - on-line cpus target */
-	5,  7,  9,  UINT_MAX /* avg run threads * 2 (e.g., 9 = 2.25 threads) */
+	5,  UINT_MAX,  UINT_MAX,  UINT_MAX /* avg run threads * 2 (e.g., 9 = 2.25 threads) */
 	};
 
-static unsigned int nr_run_thresholds_eco[] = {
+/*static unsigned int nr_run_thresholds_eco[] = {
 /*      1,  2, - on-line cpus target */
-        3,  UINT_MAX /* avg run threads * 2 (e.g., 9 = 2.25 threads) */
-        };
+        //3,  UINT_MAX /* avg run threads * 2 (e.g., 9 = 2.25 threads) */
+        //};
 
 static unsigned int nr_run_hysteresis = 4;  /* 0.5 thread */
 module_param(nr_run_hysteresis, uint, 0644);
@@ -125,29 +125,29 @@ static unsigned int calculate_thread_stats(void)
 	unsigned int nr_run;
 	unsigned int threshold_size;
 
-	if (!eco_mode_active) {
+	if (1) {
 		threshold_size =  ARRAY_SIZE(nr_run_thresholds_full);
-		nr_run_hysteresis = 8;
+		nr_run_hysteresis = 4;
 		nr_fshift = 3;
 #ifdef DEBUG_INTELLI_PLUG
 		pr_info("intelliplug: full mode active!");
 #endif
 	}
-	else {
+	/*else {
 		threshold_size =  ARRAY_SIZE(nr_run_thresholds_eco);
 		nr_run_hysteresis = 4;
 		nr_fshift = 1;
 #ifdef DEBUG_INTELLI_PLUG
 		pr_info("intelliplug: eco mode active!");
-#endif
-	}
+#endif*/
+	//}
 
 	for (nr_run = 1; nr_run < threshold_size; nr_run++) {
 		unsigned int nr_threshold;
-		if (!eco_mode_active)
+		if (1)
 			nr_threshold = nr_run_thresholds_full[nr_run - 1];
-		else
-			nr_threshold = nr_run_thresholds_eco[nr_run - 1];
+		//else
+			//nr_threshold = nr_run_thresholds_eco[nr_run - 1];
 
 		if (nr_run_last <= nr_run)
 			nr_threshold += nr_run_hysteresis;
@@ -177,7 +177,7 @@ static void __cpuinit intelli_plug_work_fn(struct work_struct *work)
 		// detect artificial loads or constant loads
 		// using msm rqstats
 		nr_cpus = num_online_cpus();
-		if (!eco_mode_active && (nr_cpus >= 1 && nr_cpus < 4)) {
+		if (1 && (nr_cpus >= 1 && nr_cpus < 4)) {
 			decision = mp_decision();
 			if (decision) {
 				switch (nr_cpus) {
@@ -203,8 +203,8 @@ static void __cpuinit intelli_plug_work_fn(struct work_struct *work)
 				if (persist_count > 0)
 					persist_count--;
 				if (persist_count == 0) {
-					//take down everyone
-					for (i = 3; i > 0; i--)
+					//take down cpu1
+					for (i = 1; i > 0; i--)
 						cpu_down(i);
 				}
 #ifdef DEBUG_INTELLI_PLUG
@@ -270,7 +270,7 @@ static void __cpuinit intelli_plug_work_fn(struct work_struct *work)
 static void intelli_plug_early_suspend(struct early_suspend *handler)
 {
 	int i;
-	int num_of_active_cores = 4;
+	int num_of_active_cores = 2;
 
 	cancel_delayed_work_sync(&intelli_plug_work);
 
@@ -296,10 +296,10 @@ static void __cpuinit intelli_plug_late_resume(struct early_suspend *handler)
 	mutex_unlock(&intelli_plug_mutex);
 
 	/* wake up everyone */
-	if (eco_mode_active)
-		num_of_active_cores = 2;
+	if (0)
+		num_of_active_cores = 1;
 	else
-		num_of_active_cores = 4;
+		num_of_active_cores = 2;
 
 	for (i = 1; i < num_of_active_cores; i++) {
 		cpu_up(i);
@@ -339,6 +339,7 @@ int __init intelli_plug_init(void)
 }
 
 MODULE_AUTHOR("Paul Reioux <reioux@gmail.com>");
+MODULE_AUTHOR("Rachit Rawat <rachit.rc96@gmail.com>");
 MODULE_DESCRIPTION("'intell_plug' - An intelligent cpu hotplug driver for "
 	"Low Latency Frequency Transition capable processors");
 MODULE_LICENSE("GPL");
