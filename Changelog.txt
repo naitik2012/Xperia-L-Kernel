@@ -132,3 +132,26 @@ Devices Supported ( 3.4 Linux kernel ):-
 * Backport all major previous features
 * Removed more debugging
 * NO Bulls**t
+
+>----Version 2.1----
+* My own intelli_plug driver 1.7 based on @faux123's intelli_plug 1.6
+  - Optimized for dual core devices
+  - Remove eco mode completely since switching 1 core off can affect device performance
+* Add samsung's exfat 1.2.4 driver - Thanks to @DooMLoRD and @faux123
+  exFAT is a proposed replacement for FAT32 that addresses many of its limitations. 
+  One of the major flaws of FAT32 is the rapid fragmentation of files. 
+  This is because the constant creation and deletion of files creates noncontiguous areas of free space. 
+  When large files are placed into these spaces, they are broken into many pieces to fit. 
+  exFAT uses a free space bitmap just like other modern file systems. 
+  This allows exFAT to find contiguous space where the file will fit, thereby reducing the occurrence of fragmentation.
+  Check this for enabling exfat support in your ROM - http://forum.xda-developers.com/showthread.php?p=39936020&posted=1#post39936020
+* Revert to stock voltages and Undervolt each frequency by -25mV
+* Remove 192 MHz and set 288 MHz as min ( I noticed higher battery drain at 192 MHz)
+* Kernel will boot at my own recommended settings : (No need to change them if you aren't absolutely sure)
+  * mpdecision off
+  * intelli_plug on
+  * default governor - intellidemand
+  * default min frequency - 288 MHz
+  * default GPU max frequency - 400 MHz
+* Remove more debugging
+* Kernel and modules combined into single flashable recovery zip

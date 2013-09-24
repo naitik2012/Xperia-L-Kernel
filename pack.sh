@@ -13,20 +13,14 @@ mkdir out
 fi
 
 echo " Getting compiled modules \n"
-rm -rf Modules/system/lib/modules/*
-cd Modules/system/lib/modules
+rm -rf meta/system/lib/modules/*
+cd meta/system/lib/modules
 mkdir prima
 cd ../../../../
-cp prima_legacy/wlan.ko Modules/system/lib/modules/prima/prima_wlan.ko
-find /home/rachit/android/taoshan/kernel -name '*ko' -exec cp '{}' Modules/system/lib/modules \;
-    mv Modules/system/lib/modules/cfg80211.ko Modules/system/lib/modules/prima/cfg80211.ko
+cp prima_legacy/wlan.ko meta/system/lib/modules/prima/prima_wlan.ko
+find /home/rachit/android/taoshan/kernel -name '*ko' -exec cp '{}' meta/system/lib/modules \;
+    mv meta/system/lib/modules/cfg80211.ko meta/system/lib/modules/prima/cfg80211.ko
    # mv Modules/system/lib/modules/wlan.ko Modules/system/lib/modules/prima/prima_wlan.ko
-
-echo " Creating flashable Modules.zip \n"
-cd Modules
-zip -9rq Modules.zip *
-mv Modules.zip ../out/
-cd ../
 
 # Make Ramdisks
 echo " Creating ramdisk \n "
