@@ -20,6 +20,14 @@ cd ../../../../
 cp prima_legacy/wlan.ko meta/system/lib/modules/prima/prima_wlan.ko
 find /home/rachit/android/taoshan/kernel -name '*ko' -exec cp '{}' meta/system/lib/modules \;
     mv meta/system/lib/modules/cfg80211.ko meta/system/lib/modules/prima/cfg80211.ko
+    mv meta/system/lib/modules/cifs.ko Modules/cifs.ko
+    mv meta/system/lib/modules/fuse.ko Modules/fuse.ko
+    mv meta/system/lib/modules/ntfs.ko Modules/ntfs.ko
+    mv meta/system/lib/modules/hid-sony.ko Modules/hid-sony.ko
+    mv meta/system/lib/modules/nls_utf8.ko Modules/nls_utf8.ko
+    mv meta/system/lib/modules/tun.ko Modules/tun.ko
+    mv meta/system/lib/modules/exfat_core.ko Modules/exfat_core.ko
+    mv meta/system/lib/modules/exfat_fs.ko Modules/exfat_fs.ko
    # mv Modules/system/lib/modules/wlan.ko Modules/system/lib/modules/prima/prima_wlan.ko
 
 # Make Ramdisks

@@ -155,3 +155,20 @@ Devices Supported ( 3.4 Linux kernel ):-
   * default GPU max frequency - 400 MHz
 * Remove more debugging
 * Kernel and modules combined into single flashable recovery zip
+
+>----Version 2.2----
+* Disable intelli_plug for now and re-enable MPDecision
+ - Offers better performance 
+ - More battery efficient
+ - is reliable
+* Max Cpu clock set to 1026 MHz -- fixes wakeup lag
+* Extra modules separated from kernel zip
+  - cifs.ko
+  - ntfs.ko
+  - fuse.ko
+  - tun.ko
+  - nls_utf8.ko
+  - exfat_core.ko & exfat_fs.ko  -- exfat modules
+  - hid-sony.ko  -- sony ps3 controller module
+Users can cherrypick the required module they want and place it in /system/lib/modules and set perm r-w-r-r
+Please note that insmoding modules may affect device performance and battery life

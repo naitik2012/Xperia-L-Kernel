@@ -26,7 +26,7 @@
 #define LVL_LOW		RPM_VREG_CORNER_LOW
 #define LVL_NOM		RPM_VREG_CORNER_NOMINAL
 #define LVL_HIGH	RPM_VREG_CORNER_HIGH
-#define DISABLE_MSM8230_LITE
+#undef DISABLE_MSM8230_LITE
 static struct hfpll_data hfpll_data __initdata = {
 	.mode_offset = 0x00,
 	.l_offset = 0x08,
