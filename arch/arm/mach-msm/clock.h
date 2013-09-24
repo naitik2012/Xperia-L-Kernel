@@ -184,8 +184,8 @@ void clock_debug_print_enabled(void);
 static inline int clock_debug_init(struct clk_init_data *data) { return; }
 static inline int clock_debug_add(struct clk *clock) { return; }
 static inline void clock_debug_print_enabled(void) { return; }*/
-//#endif
-
+#endif
+*/
 extern struct clk dummy_clk;
 
 #define CLK_DUMMY(clk_name, clk_id, clk_dev, flags) { \
