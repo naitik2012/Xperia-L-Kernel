@@ -25,12 +25,12 @@
 #undef DEBUG_INTELLI_PLUG
 
 #define INTELLI_PLUG_MAJOR_VERSION	1
-#define INTELLI_PLUG_MINOR_VERSION	7
+#define INTELLI_PLUG_MINOR_VERSION	8
 
 #define DEF_SAMPLING_RATE		(50000)
 #define DEF_SAMPLING_MS			(200)
 
-#define DUAL_CORE_PERSISTENCE		12
+#define DUAL_CORE_PERSISTENCE		15
 #define TRI_CORE_PERSISTENCE		12
 #define QUAD_CORE_PERSISTENCE		9
 
@@ -57,7 +57,7 @@ module_param(nr_fshift, uint, 0644);
 
 static unsigned int nr_run_thresholds_full[] = {
 /* 	1,  2,  3,  4 - on-line cpus target */
-	5,  UINT_MAX,  UINT_MAX,  UINT_MAX /* avg run threads * 2 (e.g., 9 = 2.25 threads) */
+	5,  7,  9,  UINT_MAX /* avg run threads * 2 (e.g., 9 = 2.25 threads) */
 	};
 
 /*static unsigned int nr_run_thresholds_eco[] = {
@@ -127,7 +127,7 @@ static unsigned int calculate_thread_stats(void)
 
 	if (1) {
 		threshold_size =  ARRAY_SIZE(nr_run_thresholds_full);
-		nr_run_hysteresis = 4;
+		nr_run_hysteresis = 8;
 		nr_fshift = 3;
 #ifdef DEBUG_INTELLI_PLUG
 		pr_info("intelliplug: full mode active!");
