@@ -30,7 +30,7 @@
 #define DEF_SAMPLING_RATE		(50000)
 #define DEF_SAMPLING_MS			(200)
 
-#define DUAL_CORE_PERSISTENCE		15
+#define DUAL_CORE_PERSISTENCE		12
 #define TRI_CORE_PERSISTENCE		12
 #define QUAD_CORE_PERSISTENCE		9
 
@@ -127,7 +127,7 @@ static unsigned int calculate_thread_stats(void)
 
 	if (1) {
 		threshold_size =  ARRAY_SIZE(nr_run_thresholds_full);
-		nr_run_hysteresis = 8;
+		nr_run_hysteresis = 4;
 		nr_fshift = 3;
 #ifdef DEBUG_INTELLI_PLUG
 		pr_info("intelliplug: full mode active!");
