@@ -172,3 +172,12 @@ Devices Supported ( 3.4 Linux kernel ):-
   - hid-sony.ko  -- sony ps3 controller module
 Users can cherrypick the required module they want and place it in /system/lib/modules and set perm r-w-r-r
 Please note that insmoding modules may affect device performance and battery life
+
+>----Version 2.3----
+* Max clock freq now upto 1.4 GHz
+* Default boot freq 288MHz-1.2GHz
+* Reintroduce intelli_plug
+* Updated intelli_plug to 1.8 with fixes
+* Fixes to intellidemand
+* MpDecision off by default
+* Wlan Config file now from stock - WCNSS_qcom_cfg.ini
