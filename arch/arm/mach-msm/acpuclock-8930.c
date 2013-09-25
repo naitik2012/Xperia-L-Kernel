@@ -26,7 +26,7 @@
 #define LVL_LOW		RPM_VREG_CORNER_LOW
 #define LVL_NOM		RPM_VREG_CORNER_NOMINAL
 #define LVL_HIGH	RPM_VREG_CORNER_HIGH
-#undef DISABLE_MSM8230_LITE
+
 static struct hfpll_data hfpll_data __initdata = {
 	.mode_offset = 0x00,
 	.l_offset = 0x08,
@@ -168,13 +168,13 @@ static struct acpu_level acpu_freq_tbl_slow[] __initdata = {
 	{ 1, {   918000, HFPLL, 1, 0x22 }, L2(10), 1100000 },
 	{ 1, {   972000, HFPLL, 1, 0x24 }, L2(10), 1125000 },
 	{ 1, {  1026000, HFPLL, 1, 0x26 }, L2(10), 1125000 },
-
-#ifdef DISABLE_MSM8230_LITE
 	{ 1, {  1080000, HFPLL, 1, 0x28 }, L2(15), 1175000 },
 	{ 1, {  1134000, HFPLL, 1, 0x2A }, L2(15), 1175000 },
 	{ 1, {  1188000, HFPLL, 1, 0x2C }, L2(15), 1200000 },
-#endif // #ifdef DISABLE_MSM8230_LITE
-
+	{ 1, {  1242000, HFPLL, 1, 0x2E }, L2(15), 1200000 },
+	{ 1, {  1296000, HFPLL, 1, 0x30 }, L2(15), 1225000 },
+	{ 1, {  1350000, HFPLL, 1, 0x32 }, L2(15), 1225000 },
+	{ 1, {  1404000, HFPLL, 1, 0x34 }, L2(15), 1237500 },
 	{ 0, { 0 } }
 };
 
@@ -193,13 +193,13 @@ static struct acpu_level acpu_freq_tbl_nom[] __initdata = {
 	{ 1, {   918000, HFPLL, 1, 0x22 }, L2(10), 1075000 },
 	{ 1, {   972000, HFPLL, 1, 0x24 }, L2(10), 1100000 },
 	{ 1, {  1026000, HFPLL, 1, 0x26 }, L2(10), 1100000 },
-
-#ifdef DISABLE_MSM8230_LITE
 	{ 1, {  1080000, HFPLL, 1, 0x28 }, L2(15), 1150000 },
 	{ 1, {  1134000, HFPLL, 1, 0x2A }, L2(15), 1150000 },
 	{ 1, {  1188000, HFPLL, 1, 0x2C }, L2(15), 1175000 },
-#endif // #ifdef DISABLE_MSM8230_LITE
-
+	{ 1, {  1242000, HFPLL, 1, 0x2E }, L2(15), 1175000 },
+	{ 1, {  1296000, HFPLL, 1, 0x30 }, L2(15), 1200000 },
+	{ 1, {  1350000, HFPLL, 1, 0x32 }, L2(15), 1200000 },
+	{ 1, {  1404000, HFPLL, 1, 0x34 }, L2(15), 1212500 },
 	{ 0, { 0 } }
 };
 
@@ -218,13 +218,13 @@ static struct acpu_level acpu_freq_tbl_fast[] __initdata = {
 	{ 1, {   918000, HFPLL, 1, 0x22 }, L2(10), 1025000 },
 	{ 1, {   972000, HFPLL, 1, 0x24 }, L2(10), 1050000 },
 	{ 1, {  1026000, HFPLL, 1, 0x26 }, L2(10), 1050000 },
-
-#ifdef DISABLE_MSM8230_LITE
 	{ 1, {  1080000, HFPLL, 1, 0x28 }, L2(15), 1100000 },
 	{ 1, {  1134000, HFPLL, 1, 0x2A }, L2(15), 1100000 },
 	{ 1, {  1188000, HFPLL, 1, 0x2C }, L2(15), 1125000 },
-#endif // #ifdef DISABLE_MSM8230_LITE
-
+	{ 1, {  1242000, HFPLL, 1, 0x2E }, L2(15), 1125000 },
+	{ 1, {  1296000, HFPLL, 1, 0x30 }, L2(15), 1150000 },
+	{ 1, {  1350000, HFPLL, 1, 0x32 }, L2(15), 1150000 },
+	{ 1, {  1404000, HFPLL, 1, 0x34 }, L2(15), 1162500 },
 	{ 0, { 0 } }
 };
 
